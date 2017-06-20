@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Network_design"
         mc:Ignorable="d"
-        Title="Network design" Height="600" Width="1225" WindowState="Maximized" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+        Title="Network design" Height="608" Width="1225" WindowState="Maximized" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Файл">
@@ -32,6 +32,31 @@
                 <Button Content="О Программе" BorderBrush="{x:Null}" Background="{x:Null}"/>
             </MenuItem>
         </Menu>
+
+        <Grid HorizontalAlignment="Left" Margin="0,20,0,0" Width="288">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="288" Background="#FFEAE3E3">
+                    <Grid Width="266">
+                        <GroupBox x:Name="groupBox" Header="Конечные устройства" Height="180" VerticalAlignment="Top">
+                            <Canvas Height="164" Margin="0,0,-6,-6" VerticalAlignment="Top"/>
+                        </GroupBox>
+                        <GroupBox x:Name="groupBox1" Header="Сетевые устройства" Margin="0,185,0,0" Height="180" VerticalAlignment="Top">
+                            <Canvas Height="164" Margin="0,0,-6,-6" VerticalAlignment="Top"/>
+                        </GroupBox>
+                        <GroupBox x:Name="groupBox2" Header="Соединение" Margin="0,370,0,0" Height="180" VerticalAlignment="Top">
+                            <Canvas Height="164" Margin="0,0,-6,-6" VerticalAlignment="Top"/>
+                        </GroupBox>
+                    </Grid>
+                </DockPanel>
+            </ScrollViewer>
+        </Grid>
+        
+        <Grid Margin="288,20,0,0" Background="#FFF1C2C2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Canvas HorizontalAlignment="Left" Height="900" VerticalAlignment="Top" Width="1500"/>
+            </ScrollViewer>
+        </Grid>
+        
 
     </Grid>
 </Window>
