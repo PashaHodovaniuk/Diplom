@@ -18,6 +18,9 @@
                 <Separator/>
                 <Button Content="Закрыть" BorderBrush="{x:Null}" Background="{x:Null}" ClickMode="Press" Click="Button_Click"/>
             </MenuItem>
+            <MenuItem Header="Вид">
+                <CheckBox x:Name="CB_Components" BorderBrush="{x:Null}" Background="{x:Null}" Content="Компоненты" IsChecked="True" Checked="CB_Components_Checked"/>
+            </MenuItem>
             <MenuItem Header="Правка">
                 <Button Content="Удаление" BorderBrush="{x:Null}" Background="{x:Null}"/>
                 <Separator/>
@@ -33,7 +36,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid HorizontalAlignment="Left" Margin="0,20,0,0" Width="288">
+        <Grid x:Name="Components" HorizontalAlignment="Left" Margin="0,20,0,0" Width="288" Visibility="Visible">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="288" Background="#FFEAE3E3">
                     <Grid Width="266">
@@ -55,7 +58,7 @@
             </ScrollViewer>
         </Grid>
 
-        <Grid Margin="288,20,0,0" Background="#FFF1C2C2">
+        <Grid x:Name="Panel_convas" Margin="288,20,0,0" Background="#FFF1C2C2">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <Canvas HorizontalAlignment="Left" Height="900" VerticalAlignment="Top" Width="1500"/>
             </ScrollViewer>
