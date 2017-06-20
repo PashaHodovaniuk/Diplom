@@ -34,5 +34,11 @@ namespace Network_design
         {
             Application.Current.Shutdown();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Configurations temp = new Configurations();
+            temp.Show();
+        }
     }
 }

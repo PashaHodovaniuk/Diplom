@@ -7,7 +7,7 @@
         xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Configurations" Height="373.404" Width="418.085" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Configurations" Height="373.404" Width="418.085" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <Label x:Name="label" Content="IP-адрес:" HorizontalAlignment="Left" Height="31" Margin="10,51,0,0" VerticalAlignment="Top" Width="96" FontSize="14.667"/>
         <Label x:Name="label1" Content="Маска подсети:" HorizontalAlignment="Left" Height="31" Margin="10,82,0,0" VerticalAlignment="Top" Width="135" FontSize="14.667"/>
@@ -18,8 +18,30 @@
             x:Name="IP" 
             Mask="000.000.000.000"      
             CaretIndex="0"   
-            Margin="248,0,0,262" 
-            FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="154">
+            Margin="266,0,0,262" 
+            FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124">
         </xctk:MaskedTextBox>
+        <xctk:MaskedTextBox 
+        	x:Name="Mask" 
+        	Mask="000.000.000.000"   
+        	Margin="266,0,0,231" 
+        	FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124"/>
+        <xctk:MaskedTextBox 
+        	x:Name="maingate" 
+        	Mask="000.000.000.000"   
+        	Margin="266,0,0,201" 
+        	FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124"/>
+        <xctk:MaskedTextBox 
+        	x:Name="DNS1" 
+        	Mask="000.000.000.000"   
+        	Margin="266,0,0,155" 
+        	FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124"/>
+        <xctk:MaskedTextBox 
+        	x:Name="DNS2" 
+        	Mask="000.000.000.000"   
+        	Margin="266,0,0,119" 
+        	FontSize="14" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="124"/>
+        <Button x:Name="btn_Apply" Content="Применить" HorizontalAlignment="Left" Height="31" Margin="50,279,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button x:Name="btn_Cancel" Content="Отмена" HorizontalAlignment="Left" Height="31" Margin="221,279,0,0" VerticalAlignment="Top" Width="139" Click="btn_Cancel_Click"/>
     </Grid>
 </Window>

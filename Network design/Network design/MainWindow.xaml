@@ -25,7 +25,7 @@
                 <Button Content="Вставить" BorderBrush="{x:Null}" Background="{x:Null}"/>
                 <Button Content="Выризать" BorderBrush="{x:Null}" Background="{x:Null}"/>
             </MenuItem>
-            <Button Content="Отчёт" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <Button Content="Отчёт" BorderBrush="{x:Null}" Background="{x:Null}" Click="Button_Click_1"/>
             <MenuItem Header="Помощь">
                 <Button Content="Помощь" BorderBrush="{x:Null}" Background="{x:Null}"/>
                 <Separator/>
