@@ -43,16 +43,7 @@ namespace Network_design
 
         private void CB_Components_Checked(object sender, RoutedEventArgs e)
         {
-            if (CB_Components.IsChecked == true)
-            {
-                CB_Components.IsChecked = false;
-                this.Panel_convas.Margin = new Thickness(0, 20, 0, 0);
-            }
-            else
-            {
-                CB_Components.IsChecked = true;
-                this.Panel_convas.Margin = new Thickness(288, 20, 0, 0);
-            }
+           
         }
     }
 }
