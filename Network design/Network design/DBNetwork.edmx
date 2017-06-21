@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище NetworkDeviceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NetworkDevices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Type" Type="int" Nullable="false" />
+          <Property Name="ID_Producer" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Number_of_ports" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_NetworkDevices_Producer">
+          <End Role="Producer" Type="Self.Producer" Multiplicity="1" />
+          <End Role="NetworkDevices" Type="Self.NetworkDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NetworkDevices">
+              <PropertyRef Name="ID_Producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NetworkDevices_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="NetworkDevices" Type="Self.NetworkDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NetworkDevices">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище NetworkDeviceModelContainer">
+          <EntitySet Name="NetworkDevices" EntityType="Self.NetworkDevices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NetworkDevices_Producer" Association="Self.FK_NetworkDevices_Producer">
+            <End Role="Producer" EntitySet="Producer" />
+            <End Role="NetworkDevices" EntitySet="NetworkDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NetworkDevices_Type" Association="Self.FK_NetworkDevices_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="NetworkDevices" EntitySet="NetworkDevices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetworkDeviceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NetworkDevices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Type" Type="Int32" Nullable="false" />
+          <Property Name="ID_Producer" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Number_of_ports" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Producer" Relationship="Self.FK_NetworkDevices_Producer" FromRole="NetworkDevices" ToRole="Producer" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_NetworkDevices_Type" FromRole="NetworkDevices" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NetworkDevices" Relationship="Self.FK_NetworkDevices_Producer" FromRole="Producer" ToRole="NetworkDevices" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NetworkDevices" Relationship="Self.FK_NetworkDevices_Type" FromRole="Type" ToRole="NetworkDevices" />
+        </EntityType>
+        <Association Name="FK_NetworkDevices_Producer">
+          <End Role="Producer" Type="Self.Producer" Multiplicity="1" />
+          <End Role="NetworkDevices" Type="Self.NetworkDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NetworkDevices">
+              <PropertyRef Name="ID_Producer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NetworkDevices_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="NetworkDevices" Type="Self.NetworkDevices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NetworkDevices">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetworkDeviceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NetworkDevices" EntityType="Self.NetworkDevices" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_NetworkDevices_Producer" Association="Self.FK_NetworkDevices_Producer">
+            <End Role="Producer" EntitySet="Producer" />
+            <End Role="NetworkDevices" EntitySet="NetworkDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NetworkDevices_Type" Association="Self.FK_NetworkDevices_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="NetworkDevices" EntitySet="NetworkDevices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище NetworkDeviceModelContainer" CdmEntityContainer="NetworkDeviceEntities">
+          <EntitySetMapping Name="NetworkDevices">
+            <EntityTypeMapping TypeName="NetworkDeviceModel.NetworkDevices">
+              <MappingFragment StoreEntitySet="NetworkDevices">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="ID_Producer" ColumnName="ID_Producer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Number_of_ports" ColumnName="Number_of_ports" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producer">
+            <EntityTypeMapping TypeName="NetworkDeviceModel.Producer">
+              <MappingFragment StoreEntitySet="Producer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="NetworkDeviceModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
